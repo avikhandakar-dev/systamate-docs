@@ -8,8 +8,28 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "@prisma/client": "^3.12.0",
+    "bcryptjs": "^2.4.3",
+    "daisyui": "^2.13.6",
+    "date-and-time": "^2.3.0",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.2.9",
+    "jsonwebtoken": "^8.5.1",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-hot-toast": "^2.2.0",
+    "react-icons": "^4.3.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.4.0-alpha.2",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.0-alpha.3",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "prisma": "^3.12.0",
+    "tailwindcss": "^3.0.23"
   }
 }

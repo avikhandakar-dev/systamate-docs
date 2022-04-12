@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String?
+  email     String?   @unique
+  password  String?
+  role      Role      @default(USER)
+  projects  Project[]
+  createdAt DateTime  @default(now()) @map(name: "created_at")
+  updatedAt DateTime  @updatedAt @map(name: "updated_at")
+
+  @@map(name: "users")
+}
+
+enum Role {
+  ADMIN
+  USER
+  MODERATOR
+}
+
+model Project {
+  id                      String   @id @default(cuid())
+  companyName             String?
+  companyAbbreviation     String?
+  companyProjectManager   String?
+  projectName             String?
+  applicationName         String?
+  applicationAbbreviation String?
+  consultantName          String?
+  applicationUsage        String?
+  startDate               String?
+  endDate                 String?
+  reportingDate           String?
+  hostname                String
+  ipAddress               String
+  scopes                  Scope[]
+  createdAt               DateTime @default(now()) @map(name: "created_at")
+  updatedAt               DateTime @updatedAt @map(name: "updated_at")
+  author                  User?    @relation(fields: [authorId], references: [id])
+  authorId                String?
+}
+
+model Scope {
+  id        String   @id @default(cuid())
+  name      String?
+  project   Project? @relation(fields: [projectId], references: [id])
+  projectId String?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
