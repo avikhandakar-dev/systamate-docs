@@ -70,7 +70,7 @@ const SignupForm = () => {
               <div className="text-left">
                 <label
                   for="name"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Name
                 </label>
@@ -91,7 +91,7 @@ const SignupForm = () => {
               <div className="text-left">
                 <label
                   for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Email
                 </label>
@@ -112,7 +112,7 @@ const SignupForm = () => {
               <div className="text-left">
                 <label
                   for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Password
                 </label>
@@ -134,7 +134,7 @@ const SignupForm = () => {
               <div className="text-left">
                 <label
                   for="con-password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Confirm Password
                 </label>

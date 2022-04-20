@@ -57,7 +57,7 @@ const LoginForm = () => {
               <div className="text-left">
                 <label
                   for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Email
                 </label>
@@ -78,7 +78,7 @@ const LoginForm = () => {
               <div className="text-left">
                 <label
                   for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Password
                 </label>

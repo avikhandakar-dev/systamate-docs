@@ -26,7 +26,7 @@ const ProfileHeader = ({ title = "Profile", bc }) => {
         <div className="container max-w-screen-xl mx-auto py-6">
           <h1 className="text-xl font-medium">{title}</h1>
           {bc && (
-            <div class="text-sm breadcrumbs">
+            <div className="text-sm breadcrumbs">
               <ul>
                 {bc.map((item, index) => (
                   <li key={index}>
@@ -54,9 +54,9 @@ const ProfileHeader = ({ title = "Profile", bc }) => {
       <div className="container max-w-screen-xl mx-auto mt-8">
         <div className="px-6 pt-6 bg-slate-100 dark:bg-slate-700 rounded-md border dark:border-slate-600">
           <div className="flex gap-8">
-            <div class="avatar placeholder">
+            <div className="avatar placeholder">
               <div className="w-24 rounded bg-primary-500">
-                <span class="text-3xl text-white uppercase">
+                <span className="text-3xl text-white uppercase">
                   {getAvatar(user.name)}
                 </span>
               </div>

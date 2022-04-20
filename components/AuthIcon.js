@@ -41,9 +41,9 @@ const AuthIcon = () => {
           <Menu.Item>
             {({ active }) => (
               <div className="p-2 flex gap-4 items-center">
-                <div class="avatar placeholder">
+                <div className="avatar placeholder">
                   <div className="w-12 mask mask-squircle bg-primary-500">
-                    <span class="text-xl text-white uppercase">
+                    <span className="text-xl text-white uppercase">
                       {getAvatar(user.name)}
                     </span>
                   </div>

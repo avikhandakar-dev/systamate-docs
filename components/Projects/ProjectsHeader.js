@@ -6,7 +6,7 @@ const ProjectsHeader = ({ title = "Projects", bc }) => {
       <div className="container max-w-screen-xl mx-auto py-6">
         <h1 className="text-xl font-medium">{title}</h1>
         {bc && (
-          <div class="text-sm breadcrumbs">
+          <div className="text-sm breadcrumbs">
             <ul>
               {bc.map((item, index) => (
                 <li key={index}>
