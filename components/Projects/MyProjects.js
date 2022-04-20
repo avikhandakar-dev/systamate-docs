@@ -31,10 +31,6 @@ const Myprojects = () => {
       ) : (
         <div className="container max-w-screen-xl mx-auto">
           <div className="py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index + 1} />
-            ))}
-
             <Link href="/project/new">
               <a className="p-4 rounded-md shadow border border-slate-100 dark:border-slate-700 w-full max-w-xl aspect-video sm:aspect-square bg-white dark:bg-slate-800/70 flex justify-center items-center flex-col gap-2">
                 <FaPlus className="text-4xl text-gray-500" />
@@ -43,6 +39,9 @@ const Myprojects = () => {
                 </p>
               </a>
             </Link>
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index + 1} />
+            ))}
           </div>
         </div>
       )}

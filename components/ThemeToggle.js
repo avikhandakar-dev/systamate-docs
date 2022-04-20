@@ -8,26 +8,34 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        transition={{ duration: 0.2 }}
-        key={theme}
-        className="text-primary-500 dark:text-yellow-500 text-2xl cursor-pointer"
+    <div className="px-2 pt-4 pb-2 rounded-md">
+      <div
+        className={`h-6 w-12 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400 dark:from-primary-400 dark:to-primary-500 text-white flex items-center cursor-pointer px-1.5 duration-300 ${
+          theme === "dark" ? "justify-end" : "justify-start"
+        }`}
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
-        {theme === "dark" ? (
-          <BiSun
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          />
-        ) : (
-          <RiMoonClearFill
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          />
-        )}
-      </motion.div>
-    </AnimatePresence>
+        <motion.div
+          layout
+          className="h-4 aspect-square rounded-full flex justify-center items-center bg-white overflow-hidden shadow-sm"
+        >
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <motion.span
+              key={theme === "dark" ? "moon" : "sun"}
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 30, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className={`text-xs ${
+                theme === "dark" ? "text-primary-500" : "text-yellow-500"
+              }`}
+            >
+              {theme === "dark" ? <RiMoonClearFill /> : <BiSun />}
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 

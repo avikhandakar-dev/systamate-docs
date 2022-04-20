@@ -18,7 +18,6 @@ const NavBar = () => {
           </div>
 
           <div className="font-medium flex items-center justify-center space-x-4">
-            <ThemeToggle />
             <AuthIcon />
           </div>
         </div>

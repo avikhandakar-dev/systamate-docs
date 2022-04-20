@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index }) => {
             Scope : {project.scopes?.length || 0}
           </p>
         </div>
-        <Link href="/project/[id]" as={`/project/1`}>
+        <Link href="/project/[id]" as={`/project/${project.id}`}>
           <a className="btn btn-link btn-primary p-0 h-auto min-h-0">View</a>
         </Link>
       </div>

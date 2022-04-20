@@ -17,6 +17,7 @@ model User {
   password  String?
   role      Role      @default(USER)
   projects  Project[]
+  profile   Profile[]
   createdAt DateTime  @default(now()) @map(name: "created_at")
   updatedAt DateTime  @updatedAt @map(name: "updated_at")
 
@@ -27,6 +28,19 @@ enum Role {
   ADMIN
   USER
   MODERATOR
+}
+
+model Profile {
+  id         String   @id @default(cuid())
+  user       User?    @relation(fields: [userId], references: [id])
+  userId     String?  @unique
+  gender     String?
+  phone      String?
+  position   String?
+  department String?
+  avatar     String
+  createdAt  DateTime @default(now()) @map(name: "created_at")
+  updatedAt  DateTime @updatedAt @map(name: "updated_at")
 }
 
 model Project {
@@ -56,6 +70,38 @@ model Scope {
   name      String?
   project   Project? @relation(fields: [projectId], references: [id])
   projectId String?
+  issues    Issue[]
+  authorId  String?
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Issue {
+  id                   String   @id @default(cuid())
+  title                String?
+  riskRating           String?
+  impactRating         String?
+  likelihoodRating     String?
+  CVERating            String
+  CVSSRating           String
+  CVSSVector           String
+  affectedHost         String
+  observation          String
+  implication          String
+  remediation          String
+  screenshot           String
+  managementComments   String
+  targetResolutionDate String
+  status               String?
+  dateRaised           String
+  DTOwner              String
+  projectOwner         String
+  DTFollowUpDate       String
+  followUpComments     String
+  DTFollowUpStatus     String?
+  scope                Scope?   @relation(fields: [scopeId], references: [id])
+  scopeId              String?
+  authorId             String?
+  createdAt            DateTime @default(now()) @map(name: "created_at")
+  updatedAt            DateTime @updatedAt @map(name: "updated_at")
 }

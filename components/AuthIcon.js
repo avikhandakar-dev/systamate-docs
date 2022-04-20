@@ -6,6 +6,8 @@ import { IoMdExit } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import AuthContext from "@lib/AuthContext";
+import ThemeToggle from "./ThemeToggle";
+import { getAvatar } from "@lib/utils";
 
 const AuthIcon = () => {
   const { user, setUser, setToken } = useContext(AuthContext);
@@ -16,9 +18,9 @@ const AuthIcon = () => {
       url: "/project/new",
     },
     {
-      name: "Update Profile",
+      name: "My Profile",
       icon: <FaUserEdit />,
-      url: "/profile",
+      url: "/account/profile",
     },
   ];
   return (
@@ -41,8 +43,8 @@ const AuthIcon = () => {
               <div className="p-2 flex gap-4 items-center">
                 <div class="avatar placeholder">
                   <div className="w-12 mask mask-squircle bg-primary-500">
-                    <span class="text-3xl text-white uppercase">
-                      {user?.name?.substring(0, 1)}
+                    <span class="text-xl text-white uppercase">
+                      {getAvatar(user.name)}
                     </span>
                   </div>
                 </div>
@@ -95,6 +97,7 @@ const AuthIcon = () => {
               </button>
             )}
           </Menu.Item>
+          <Menu.Item>{({ active }) => <ThemeToggle />}</Menu.Item>
         </Menu.Items>
       </Transition>
     </Menu>
