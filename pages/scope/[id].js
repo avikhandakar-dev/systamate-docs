@@ -8,6 +8,7 @@ import { AiFillFile } from "react-icons/ai";
 import ScopesViewer from "@components/Scopes/ScopesViewer";
 import { GlobalContext } from "@lib/GlobalContext";
 import IssuesViewer from "@components/Issues/IssuesViewer";
+import Head from "next/head";
 
 const ScopeView = () => {
   const { doRefrash } = useContext(GlobalContext);
@@ -50,6 +51,9 @@ const ScopeView = () => {
   }, [id, doRefrash]);
   return (
     <>
+      <Head>
+        <title>{scope.name || "Scope"}</title>
+      </Head>
       {isLoading ? (
         <LoadingScreen fullScreen={false} />
       ) : (

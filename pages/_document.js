@@ -7,6 +7,7 @@ class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content="#FFF" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="icon" href="/favicon.svg" />
           <link
             href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
             rel="stylesheet"

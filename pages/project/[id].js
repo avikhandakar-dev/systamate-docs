@@ -7,6 +7,7 @@ import LoadingScreen from "@components/Global/LoadingScreen";
 import { AiFillFile } from "react-icons/ai";
 import ScopesViewer from "@components/Scopes/ScopesViewer";
 import { GlobalContext } from "@lib/GlobalContext";
+import Head from "next/head";
 
 const ProjectView = () => {
   const { doRefrash } = useContext(GlobalContext);
@@ -42,12 +43,14 @@ const ProjectView = () => {
   }, [id, doRefrash]);
   return (
     <>
+      <Head>
+        <title>{project.projectName || "Project"}</title>
+      </Head>
       {isLoading ? (
         <LoadingScreen fullScreen={false} />
       ) : (
         <>
           <ProjectsHeader title="Project" bc={Breadcrumbs} />
-
           <ScopesViewer project={project} />
         </>
       )}

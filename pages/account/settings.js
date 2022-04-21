@@ -5,6 +5,7 @@ import EditProfileForm from "@components/Profile/EditProfileForm";
 import { fetchGetJSON } from "@lib/utils";
 import LoadingScreen from "@components/Global/LoadingScreen";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 
 const Breadcrumbs = [
   {
@@ -35,6 +36,9 @@ const ProfileSettings = () => {
 
   return (
     <>
+      <Head>
+        <title>Profile Settings</title>
+      </Head>
       <ProfileHeader bc={Breadcrumbs} />
       {isLoading ? (
         <LoadingScreen fullScreen={false} />

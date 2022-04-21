@@ -9,8 +9,8 @@ const CoverageForm = ({
   loading,
 }) => {
   const Schema = Yup.object().shape({
-    hostname: Yup.string().min(3, "Too short!").max(50, "Too long!"),
-    ipAddress: Yup.string().min(3, "Too short!").max(50, "Too long!"),
+    hostname: Yup.string().min(3, "Too short!"),
+    ipAddress: Yup.string().min(3, "Too short!"),
   });
 
   const formik = useFormik({

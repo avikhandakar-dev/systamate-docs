@@ -8,30 +8,141 @@ import Link from "next/link";
 const ScopeCard = ({ scope, project }) => {
   const { doRefrash, setDoRefrash } = useContext(GlobalContext);
 
-  // const xlsxData = () => {
-  //   const data = [];
-  //   scope.issues.forEach((issue) => {
-  //     const obj = {
-  //       Title: issue.title,
-  //       "Risk rating": issue.riskRating,
-  //       "Impact rating": issue.impactRating,
-  //       "Likelihood rating": issue.likelihoodRating,
-  //       "CVE rating": issue.CVERating,
-  //     };
-  //     data.push(obj);
-  //   });
-  // };
-  const xlsxData = scope.issues.map((issue) => {
-    const { id, scopeId, authorId, createdAt, updatedAt, ...filteredObj } =
-      issue;
-    return filteredObj;
-  });
+  const xlsxData = () => {
+    const data = [];
+    const coverageData = [];
+    const rows = [];
+    const rows2 = [];
+    const headers = [
+      "S/N",
+      "Client",
+      "System Name",
+      "Area of Review",
+      "Risk Rating",
+      "Impact Rating",
+      "Likelihood Rating",
+      "CVE Rating",
+      "CVSS Score",
+      "CVSS Vector",
+      "Issue Title",
+      "Affected Host(s)",
+      "Observation",
+      "Implication",
+      "Remediation",
+      "Screenshot",
+      "Management Comments",
+      "Target Date",
+      "Status",
+      "Date Raised",
+      "DT Owner",
+      "Client Owner",
+      "DT Follow Up Date",
+      "Follow Up Comments",
+      "DT Follow-Up Status",
+    ];
+
+    const headers2 = ["Hostname", "IP Address"];
+
+    headers.forEach((header, index) => {
+      rows.push({
+        v: header,
+        t: "s",
+        s: {
+          font: { bold: true, sz: 14, color: { rgb: "FFFFFF" } },
+          alignment: { horizontal: "center", vertical: "center" },
+          fill: {
+            fgColor: { rgb: index < headers.length - 3 ? "513873" : "FD0101" },
+          },
+        },
+      });
+    });
+    headers2.forEach((header, index) => {
+      rows2.push({
+        v: header,
+        t: "s",
+        s: {
+          font: { bold: true, sz: 14, color: { rgb: "FFFFFF" } },
+          alignment: { horizontal: "center", vertical: "center" },
+          fill: {
+            fgColor: { rgb: "513873" },
+          },
+        },
+      });
+    });
+
+    data.push(rows);
+    coverageData.push(rows2);
+
+    scope.issues.forEach((issue, index) => {
+      const values = [
+        index + 1,
+        project.companyName,
+        project.projectName,
+        scope.name,
+        issue.riskRating,
+        issue.impactRating,
+        issue.likelihoodRating,
+        issue.CVERating,
+        issue.CVSSRating,
+        issue.CVSSVector,
+        issue.title,
+        issue.affectedHost,
+        issue.observation,
+        issue.implication,
+        issue.remediation,
+        issue.screenshot,
+        issue.managementComments,
+        issue.targetResolutionDate,
+        issue.status,
+        issue.dateRaised,
+        issue.DTOwner,
+        issue.projectOwner,
+        issue.DTFollowUpDate,
+        issue.followUpComments,
+        issue.DTFollowUpStatus,
+      ];
+
+      const tmp = [];
+
+      values.forEach((value, index) => {
+        tmp.push({
+          v: value,
+          t: "s",
+          s: {
+            alignment: { horizontal: "center", vertical: "center" },
+          },
+        });
+      });
+      data.push(tmp);
+    });
+
+    coverageData.push([
+      {
+        v: project.hostname || "N/A",
+        t: "s",
+        s: {
+          alignment: { horizontal: "center", vertical: "center" },
+        },
+      },
+      {
+        v: project.ipAddress || "N/A",
+        t: "s",
+        s: {
+          alignment: { horizontal: "center", vertical: "center" },
+        },
+      },
+    ]);
+
+    return { data, coverageData };
+  };
+
   const handelDownload = () => {
     if (!scope.issues.length) {
       toast.error("No issues to download!");
       return;
     }
-    downloadAsExcel(xlsxData);
+    const { data, coverageData } = xlsxData();
+    downloadAsExcel(data, coverageData);
   };
   const handelDelete = async (id) => {
     const userAction = confirm(`Are you sure you want to delete this scope?`);

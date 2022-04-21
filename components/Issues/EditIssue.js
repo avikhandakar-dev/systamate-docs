@@ -23,7 +23,7 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
       .required("This is required"),
     CVERating: Yup.string().max(20, "Too long!"),
     CVSSRating: Yup.string().max(20, "Too long!"),
-    CVSSVector: Yup.string().max(20, "Too long!"),
+    CVSSVector: Yup.string(),
     affectedHost: Yup.string().max(20, "Too long!"),
     observation: Yup.string().max(1000, "Too long!"),
     implication: Yup.string().max(1000, "Too long!"),
@@ -37,9 +37,7 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
     projectOwner: Yup.string().max(20, "Too long!"),
     DTFollowUpDate: Yup.string().max(20, "Too long!"),
     followUpComments: Yup.string().max(1000, "Too long!"),
-    DTFollowUpStatus: Yup.string()
-      .max(20, "Too long!")
-      .required("This is required"),
+    DTFollowUpStatus: Yup.string().max(20, "Too long!"),
   });
   const formik = useFormik({
     initialValues: {
@@ -222,6 +220,14 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
                             <option value="High">High</option>
                             <option value="Critical">Critical</option>
                           </select>
+                          {values.riskRating && (
+                            <label
+                              for="riskRating"
+                              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Risk rating
+                            </label>
+                          )}
                           {touched.riskRating && errors.riskRating && (
                             <p className="text-xs mt-1 text-red-500 font-medium">
                               {errors.riskRating}
@@ -252,6 +258,14 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
                             <option value="High">High</option>
                             <option value="Critical">Critical</option>
                           </select>
+                          {values.impactRating && (
+                            <label
+                              for="impactRating"
+                              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Impact rating
+                            </label>
+                          )}
                           {touched.impactRating && errors.impactRating && (
                             <p className="text-xs mt-1 text-red-500 font-medium">
                               {errors.impactRating}
@@ -280,6 +294,14 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
                             <option value="High">High</option>
                             <option value="Critical">Critical</option>
                           </select>
+                          {values.likelihoodRating && (
+                            <label
+                              for="likelihoodRating"
+                              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Likelihood rating
+                            </label>
+                          )}
                           {touched.likelihoodRating &&
                             errors.likelihoodRating && (
                               <p className="text-xs mt-1 text-red-500 font-medium">
@@ -562,6 +584,14 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
                             <option value="Closed">Closed</option>
                             <option value="In Progress">In Progress</option>
                           </select>
+                          {values.status && (
+                            <label
+                              for="status"
+                              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Status
+                            </label>
+                          )}
                           {touched.status && errors.status && (
                             <p className="text-xs mt-1 text-red-500 font-medium">
                               {errors.status}
@@ -714,11 +744,18 @@ const EditIssue = ({ isOpen, closeModal, issue }) => {
                           <option disabled value="">
                             DT followup status...
                           </option>
-                          <option value="Low">Low</option>
-                          <option value="Medium">Medium</option>
-                          <option value="High">High</option>
-                          <option value="Critical">Critical</option>
+                          <option value="Open">Open</option>
+                          <option value="Closed">Closed</option>
+                          <option value="In Progress">In Progress</option>
                         </select>
+                        {values.DTFollowUpStatus && (
+                          <label
+                            for="DTFollowUpStatus"
+                            className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >
+                            DT followup status
+                          </label>
+                        )}
                         {touched.DTFollowUpStatus &&
                           errors.DTFollowUpStatus && (
                             <p className="text-xs mt-1 text-red-500 font-medium">

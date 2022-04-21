@@ -285,6 +285,14 @@ const DetailsForm = ({ projectDetails, setProjectDetails, next }) => {
                   <option value="intranet">Intranet</option>
                   <option value="internet">Internet</option>
                 </select>
+                {values.applicationUsage && (
+                  <label
+                    for="applicationUsage"
+                    className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Application usage
+                  </label>
+                )}
                 {touched.applicationUsage && errors.applicationUsage && (
                   <p className="text-xs mt-1 text-red-500 font-medium">
                     {errors.applicationUsage}

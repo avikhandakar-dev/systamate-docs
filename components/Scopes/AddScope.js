@@ -119,6 +119,14 @@ const AddNewScope = ({ isOpen, closeModal, projectId }) => {
                                 Host Security Assessment
                               </option>
                             </select>
+                            {values.name && (
+                              <label
+                                for="name"
+                                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Name
+                              </label>
+                            )}
                             {touched.name && errors.name && (
                               <p className="text-xs mt-1 text-red-500 font-medium">
                                 {errors.name}

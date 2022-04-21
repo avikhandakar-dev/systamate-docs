@@ -110,6 +110,14 @@ const EditProfileForm = ({ profile }) => {
                 <option value="Transgender">Transgender</option>
                 <option value="I prefer not to say">I prefer not to say</option>
               </select>
+              {values.gender && (
+                <label
+                  for="gender"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                  Gender
+                </label>
+              )}
               {touched.gender && errors.gender && (
                 <p className="text-xs mt-1 text-red-500 font-medium">
                   {errors.gender}
@@ -163,6 +171,14 @@ const EditProfileForm = ({ profile }) => {
                 <option value="Technical Associate">Technical Associate</option>
                 <option value="Executive">Executive</option>
               </select>
+              {values.position && (
+                <label
+                  for="position"
+                  className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                  Position
+                </label>
+              )}
               {touched.position && errors.position && (
                 <p className="text-xs mt-1 text-red-500 font-medium">
                   {errors.position}

@@ -4,6 +4,7 @@ import { MdAccountTree, MdAccountCircle } from "react-icons/md";
 import { fetchGetJSON } from "@lib/utils";
 import LoadingScreen from "@components/Global/LoadingScreen";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 
 const Breadcrumbs = [
   {
@@ -34,6 +35,9 @@ const Profile = () => {
 
   return (
     <>
+      <Head>
+        <title>Profile</title>
+      </Head>
       <ProfileHeader bc={Breadcrumbs} />
       {isLoading ? (
         <LoadingScreen fullScreen={false} />

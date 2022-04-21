@@ -1,11 +1,17 @@
 import LoginForm from "@components/Auth/LoginForm";
 import AuthLayout from "layouts/auth";
+import Head from "next/head";
 
 const LoginPage = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col justify-center items-center">
-      <LoginForm />
-    </div>
+    <>
+      <Head>
+        <title>Sign In</title>
+      </Head>
+      <div className="w-full min-h-screen flex flex-col justify-center items-center">
+        <LoginForm />
+      </div>
+    </>
   );
 };
 
